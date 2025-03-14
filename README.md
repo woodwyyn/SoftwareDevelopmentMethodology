@@ -1,0 +1,1 @@
+![Maintainability](<a href="https://codeclimate.com/github/woodwyyn/SoftwareDevelopmentMethodology/maintainability"><img src="https://api.codeclimate.com/v1/badges/e5807d90aa7f5888d491/maintainability" /></a>)
