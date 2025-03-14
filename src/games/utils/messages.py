@@ -14,6 +14,6 @@ INCORRECT_ANSWER_MESSAGE = (
 )
 GAME_OVER_MESSAGE = "Game over, {}! Thank you for playing."
 LEVEL_GAME = (
-    "Choose your difficulty level (easy/hard). If no choice is made, "
+    "Choose your difficulty level (normal/hard). If no choice is made, "
     "easy mode will be selected by default: "
 )

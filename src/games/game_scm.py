@@ -2,6 +2,7 @@ from functools import reduce
 from random import randint
 
 from utils.hello import welcome_message
+from utils.game import game
 from utils.messages import (
     CORRECT_ANSWER_MESSAGE,
     END_GAME_INSTRUCTION,
@@ -27,13 +28,6 @@ def scm(a, b):
 
 def scm_tree(*args):
     return reduce(lambda x, y: scm(x, y), args)
-
-def game(numbers):
-    question = QUESTION_TEMPLATE.format(", ".join(map(str, numbers)))
-    print(question)
-
-    answer = input("Your answer: ").strip()
-    return answer
 
 def check_answer(correct_answer, user_answer, player_name):
     if user_answer == correct_answer:

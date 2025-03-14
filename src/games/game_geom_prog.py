@@ -1,6 +1,7 @@
 from random import randint
 
 from utils.hello import welcome_message
+from utils.game import game
 from utils.messages import (
     CORRECT_ANSWER_MESSAGE,
     END_GAME_INSTRUCTION,
@@ -27,15 +28,6 @@ def hide_element(progression):
     element_hidden = progression[index_hidden]
     progression[index_hidden] = ".."
     return progression, element_hidden
-
-
-def game(progression):
-    question = QUESTION_TEMPLATE.format(", ".join(map(str, progression)))
-    print(question)
-    
-    answer = input("Your answer: ").strip()
-    return answer
-
 
 def check_answer(correct_answer, user_answer, player_name):
     if int(user_answer) == correct_answer:
