@@ -28,6 +28,18 @@ def scm(a, b):
 def scm_tree(*args):
     return reduce(lambda x, y: scm(x, y), args)
 
+def game(numbers):
+    question = QUESTION_TEMPLATE.format(", ".join(map(str, numbers)))
+    print(question)
+
+    answer = input("Your answer: ").strip()
+    return answer
+
+def check_answer(correct_answer, user_answer, player_name):
+    if user_answer == correct_answer:
+        print(CORRECT_ANSWER_MESSAGE)
+    else:
+        print(INCORRECT_ANSWER_MESSAGE.format(user_answer, correct_answer, player_name))
 
 def play_game(name):
     print("\nFind the smallest common multiple of given numbers.")
@@ -35,21 +47,14 @@ def play_game(name):
 
     while True:
         numbers = get_random_numbers()
-        question = QUESTION_TEMPLATE.format(", ".join(map(str, numbers)))
-        print(question)
 
-        answer = input("Your answer: ").strip()
+        user_answer = game(numbers)
 
-        if not answer:
+        if not user_answer:
             print(GAME_OVER_MESSAGE.format(name))
             break
 
-        correct_answer = scm_tree(*numbers)
-
-        if answer == correct_answer:
-            print(CORRECT_ANSWER_MESSAGE)
-        else:
-            print(INCORRECT_ANSWER_MESSAGE.format(answer, correct_answer, name))
+        check_answer(scm_tree(*numbers), int(user_answer), name)
 
 
 if __name__ == "__main__":

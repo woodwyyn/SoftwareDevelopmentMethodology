@@ -8,7 +8,7 @@ exclude = [
 ]
 
 # Параметры формирования
-line-length = 88
+line-length = 90
 indent-width = 4
 
 # Версия Python

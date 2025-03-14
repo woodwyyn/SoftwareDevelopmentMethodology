@@ -29,28 +29,35 @@ def hide_element(progression):
     return progression, element_hidden
 
 
+def game(progression):
+    question = QUESTION_TEMPLATE.format(", ".join(map(str, progression)))
+    print(question)
+    
+    answer = input("Your answer: ").strip()
+    return answer
+
+
+def check_answer(correct_answer, user_answer, player_name):
+    if int(user_answer) == correct_answer:
+        print(CORRECT_ANSWER_MESSAGE)
+    else:
+        print(INCORRECT_ANSWER_MESSAGE.format(user_answer, correct_answer, player_name))
+
+
 def play_game(name, difficulty):
     print("\nWhat number is missing in this geometric progression?")
     print(END_GAME_INSTRUCTION)
 
     while True:
-        progression, correct_answer = hide_element(
-            get_geometric_progression(difficulty)
-        )
-
-        question = QUESTION_TEMPLATE.format(", ".join(map(str, progression)))
-        print(question)
-
-        answer = input("Your answer: ").strip()
-
-        if not answer:
+        progression, correct_answer = hide_element(get_geometric_progression(difficulty))
+        
+        user_answer = game(progression)
+        
+        if not user_answer:
             print(GAME_OVER_MESSAGE.format(name))
             break
-
-        if int(answer) == correct_answer:
-            print(CORRECT_ANSWER_MESSAGE)
-        else:
-            print(INCORRECT_ANSWER_MESSAGE.format(answer, correct_answer, name))
+            
+        check_answer(correct_answer, user_answer, name)
 
 
 if __name__ == "__main__":
