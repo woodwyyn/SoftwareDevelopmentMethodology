@@ -40,14 +40,7 @@ jobs:
           pytest --cov=. --cov-report term-missing
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      - name: Code Climate after-build
-        run: |
-          ./cc-test-reporter after-build --exit-code $?
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      - uses: codeclimate/codeclimate-action@v1
-        if: always()
+      - uses: codeclimate/codeclimate-action@v2
         with:
-          token: ${{ secrets.CODECLIMATE_API_TOKEN }}
-          coverage_command: pytest --cov=. --cov-report term-missing
-          fail_on_error: false
+          repo_token: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
+        if: always()
