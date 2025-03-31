@@ -50,7 +50,7 @@ class GeometricProgressionGame(Game):
         if not user_answer:
             return False
 
-        self.compare_answer(int(user_answer), correct_answer)
+        self.compare_answer(user_answer, correct_answer)
 
         return True
     
